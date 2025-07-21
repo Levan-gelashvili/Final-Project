@@ -1,0 +1,47 @@
+{% extends "base.html" %} {% block title %} News Page {% endblock %} {% block
+container %}
+<section class="news-section">
+    <h1>News</h1>
+    <div class="news-list">
+        <div class="news-container">
+            {% for news in news_list %}
+            <div class="news-card">
+              <img src="{{ url_for('static', filename='images/' ~ news.image) }}" alt="{{ news.title }}">
+              <div class="news-content">
+                <h2><a href="{{ url_for('news_detail', news_id=news.id) }}">{{ news.title }}</a></h2>
+                <p>{{ news.content[:200] }}...</p>
+          
+                {% if user_role == 'admin' %}
+                <form action="{{ url_for('delete_news', news_id=news.id) }}" method="POST" class="delete-form">
+                  <button type="submit" onclick="return confirm('Delete this news?')">Delete</button>
+                </form>
+                {% endif %}
+              </div>
+            </div>
+            {% else %}
+              <p class="pn">No News Available.</p>
+            {% endfor %}
+          </div>
+    </div>   
+    {% if session.get('username') %}
+      <div class="upload-box1">
+        <form method="POST" enctype="multipart/form-data">
+          {{ form.csrf_token }}
+          {{ form.title(placeholder="News Title") }}
+          {{ form.content(placeholder="News Content") }}
+          {{ form.image() }}
+          <button type="submit">Add News</button>
+        </form>
+        {% if form.errors %}
+          <ul class="errors">
+            {% for field, errors in form.errors.items() %}
+              {% for error in errors %}
+                <li>{{ error }}</li>
+              {% endfor %}
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </div>
+    {% endif %}
+</section>
+{% endblock %}

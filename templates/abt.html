@@ -1,0 +1,110 @@
+{% extends "base.html" %} {% block title %} About Page {% endblock %} {% block
+container %}
+<div class="conntainer">
+  <div class="user">
+    {% if session.get('username') %}
+    <div class="user-info-box">
+      <div class="user-header">
+        <img
+          src="{{ url_for('static', filename='images/pf-ic.png') }}"
+          alt="User Icon"
+          class="user-icon"
+        />
+      </div>
+      <div class="inff">
+        <h3>User Information</h3>
+        <p>Username: <span>{{ session.get('username') }}</span></p>
+        <p>Birthday: <span>{{ session.get('birthday') }}</span></p>
+        <p>Country: <span>{{ session.get('country') }}</span></p>
+        {% if session.get('role') == 'admin' %}
+        <p>Role: <span>Admin</span></p>
+        {% endif %}
+        <form action="{{ url_for('logout') }}" method="GET">
+          <button type="submit" class="logout-btn">LogOut</button>
+        </form>
+        {% endif %}
+      </div>
+    </div>
+    <div class="maps">
+      {% if session.get('username') %}
+      <div class="min">
+        <div class="mp1">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2977.7396614317468!2d44.74926707609865!3d41.72613627491489!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4044731c03207847%3A0x9549f57cfeb58af1!2sVazha%20Pshavela%20Ave%2C%20T&#39;bilisi!5e0!3m2!1sen!2sge!4v1753091065818!5m2!1sen!2sge"
+            width="150px"
+            height="150px"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+        <div class="add">
+          <div class="locc">
+            <h3>Location</h3>
+            <a
+              target="_blank"
+              href="https://www.google.com/maps/place/Georgian+Judo+Federation/@41.7620686,44.7791565,212m/data=!3m1!1e3!4m6!3m5!1s0x40446d873b651e07:0x80dde30ebf9ca8ac!8m2!3d41.7619795!4d44.779637!16s%2Fg%2F11dx95f32w?entry=ttu&g_ep=EgoyMDI0MTIxMS4wIKXMDSoASAFQAw%3D%3D"
+              >38 Beliashvili Street>>></a
+            >
+            <br /><br />
+            <a
+              target="_blank"
+              href="https://www.google.com/maps/place/Vazha+Pshavela+Ave,+T'bilisi/@41.7261363,44.7492671,722m/data=!3m2!1e3!4b1!4m6!3m5!1s0x4044731c03207847:0x9549f57cfeb58af1!8m2!3d41.7261323!4d44.751842!16s%2Fg%2F11r8k90s4?entry=ttu&g_ep=EgoyMDI1MDcxNi4wIKXMDSoASAFQAw%3D%3D"
+            >
+              Vazha Pshavela <br />
+              <<< Ave
+            </a>
+          </div>
+        </div>
+        <div class="mp2">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1488.0368541718126!2d44.7791565!3d41.7620686!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40446d873b651e07%3A0x80dde30ebf9ca8ac!2sGeorgian%20Judo%20Federation!5e0!3m2!1sen!2sge!4v1753091345018!5m2!1sen!2sge"
+            width="150px"
+            height="150px"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+      </div>
+      {% else %}
+      <div class="max">
+        <div class="mp3">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2977.7396614317468!2d44.74926707609865!3d41.72613627491489!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4044731c03207847%3A0x9549f57cfeb58af1!2sVazha%20Pshavela%20Ave%2C%20T&#39;bilisi!5e0!3m2!1sen!2sge!4v1753091065818!5m2!1sen!2sge"
+            width="300px"
+            height="300px"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+        <div class="add">
+          <div class="lo">
+            <h3>Location</h3>
+            <a
+              target="_blank"
+              href="https://www.google.com/maps/place/Georgian+Judo+Federation/@41.7620686,44.7791565,212m/data=!3m1!1e3!4m6!3m5!1s0x40446d873b651e07:0x80dde30ebf9ca8ac!8m2!3d41.7619795!4d44.779637!16s%2Fg%2F11dx95f32w?entry=ttu&g_ep=EgoyMDI0MTIxMS4wIKXMDSoASAFQAw%3D%3D"
+              >38 Beliashvili Street>>></a
+            >
+            <br /><br />
+            <a
+              target="_blank"
+              href="https://www.google.com/maps/place/Vazha+Pshavela+Ave,+T'bilisi/@41.7261363,44.7492671,722m/data=!3m2!1e3!4b1!4m6!3m5!1s0x4044731c03207847:0x9549f57cfeb58af1!8m2!3d41.7261323!4d44.751842!16s%2Fg%2F11r8k90s4?entry=ttu&g_ep=EgoyMDI1MDcxNi4wIKXMDSoASAFQAw%3D%3D"
+            >
+              <<< Vazha Pshavela Ave
+            </a>
+          </div>
+        </div>
+        <div class="mp4">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1488.0368541718126!2d44.7791565!3d41.7620686!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40446d873b651e07%3A0x80dde30ebf9ca8ac!2sGeorgian%20Judo%20Federation!5e0!3m2!1sen!2sge!4v1753091345018!5m2!1sen!2sge"
+            width="300px"
+            height="300px"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+  {% endblock %}
+</div>

@@ -1,0 +1,52 @@
+{% extends "base.html" %} {% block title %} Home Page {% endblock %} {% block
+container %}
+<div class="carousel-container">
+  <div class="tl">
+    <h1>HIGHLIGHTS OF 2025</h1>
+  </div>
+  <input type="radio" name="carousel" id="slide1" checked />
+  <input type="radio" name="carousel" id="slide2" />
+  <input type="radio" name="carousel" id="slide3" />
+  <input type="radio" name="carousel" id="slide4" />
+  <div class="images">
+    <div class="image">
+      <a href="{{ url_for('news_detail', news_id=2) }}">
+        <img
+          src="{{ url_for('static', filename='images/img1a.jpg') }}"
+          alt="Slide 1"
+        />
+      </a>
+    </div>
+    <div class="image">
+      <a href="{{ url_for('news_detail', news_id=3) }}">
+        <img
+          src="{{ url_for('static', filename='images/img2a.jpg') }}"
+          alt="Slide 2"
+        />
+      </a>
+    </div>
+    <div class="image">
+      <a href="{{ url_for('news_detail', news_id=5) }}">
+        <img
+          src="{{ url_for('static', filename='images/ilia.jpg') }}"
+          alt="Slide 3"
+        />
+      </a>
+    </div>
+    <div class="image">
+      <a href="{{ url_for('news_detail', news_id=1) }}">
+        <img
+          src="{{ url_for('static', filename='images/img3a.jpg') }}"
+          alt="Slide 4"
+        />
+      </a>
+    </div>
+  </div>
+  <div class="btns">
+    <label for="slide1"></label>
+    <label for="slide2"></label>
+    <label for="slide3"></label>
+    <label for="slide4"></label>
+  </div>
+</div>
+{% endblock %}

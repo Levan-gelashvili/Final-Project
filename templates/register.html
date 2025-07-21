@@ -1,0 +1,58 @@
+{% extends "base.html" %} {% block title %} Register Page {% endblock %} {%
+block container %}
+
+<div class="reg">
+  <form method="POST" action="{{ url_for('register') }}">
+    {{ form.hidden_tag() }}
+
+    <div class="ttle">
+      <h1>Registration</h1>
+    </div>
+
+    {% if form.errors %}
+    <div class="alert">Please fix the errors below.</div>
+    {% elif message %}
+    <div class="alertg">{{ message }}</div>
+    <div  class="alertl"><a href="{{ url_for('login') }}">Go To Login</a></div>
+    {% endif %}
+    <div class="usr">
+      {{ form.username(placeholder=form.username.label.text) }} {% for error in
+      form.username.errors %}
+      <div class="alert">{{ error }}</div>
+      {% endfor %}
+    </div>
+
+    <div class="psw">
+      {{ form.password(placeholder=form.password.label.text) }} {% for error in
+      form.password.errors %}
+      <div class="alert">{{ error }}</div>
+      {% endfor %}
+    </div>
+
+    <div class="rpt">
+      {{ form.repeat_password(placeholder=form.repeat_password.label.text) }} {%
+      for error in form.repeat_password.errors %}
+      <div class="alert">{{ error }}</div>
+      {% endfor %}
+    </div>
+
+    <div class="bd">
+      {{ form.birthday.label }} {{ form.birthday() }} {% for error in
+      form.birthday.errors %}
+      <div class="alert">{{ error }}</div>
+      {% endfor %}
+    </div>
+
+    <div class="cnt">
+      {{ form.country() }} {% for error in form.country.errors %}
+      <div class="alert">{{ error }}</div>
+      {% endfor %}
+    </div>
+
+    <div class="sub">{{ form.submit }}</div>
+    <p class="p">
+      Already Have An Account? <a href="{{ url_for('login') }}">Login Here</a>
+    </p>
+  </form>
+</div>
+{% endblock %}

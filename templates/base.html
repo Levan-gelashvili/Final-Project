@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=\, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bitcount+Grid+Double:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Michroma&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Michroma&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nothing+You+Could+Do&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='reset.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+    <title>{% block title %} {% endblock %}</title>
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="{{ url_for('static', filename='images/logo.png') }}"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="hd">
+        <div class="hdcont">
+          <div class="head">
+            <div class="hl">
+              <div class="logo">
+                <a href="/">
+                  <img
+                    src="{{ url_for('static', filename='images/logo.png') }}"
+                    alt="logo"
+                  />
+                </a>
+              </div>
+            </div>
+            <div class="info">
+              <div class="inf">
+                <a href="/">Home</a>
+                <a href="/news">News</a>
+                <a href="/podcasts">Podcasts</a>
+                <a href="/about">About</a>
+              </div>
+            </div>
+            <div class="tbc">
+              <a href="https://tbcbank.ge/ka/tbc-education" target="_blank"
+                ><img
+                  src="{{ url_for('static', filename='images/tbc.png') }}"
+                  alt="TBC logo"
+                />
+              </a>
+            </div>
+            {% if session.username %}
+            <div class="pfdrp">
+              <img
+                class="pf"
+                src="{{ url_for('static', filename='images/pf-ic.png') }}"
+                alt="Profile"
+              />
+              <div class="drp-con">
+                <p>Username: {{ session['username'] }}</p>
+                <p>Birth Year: {{ session['birthday'] }}</p>
+                <p>Country: {{ session['country'] }}</p>
+                <a href="{{ url_for('logout') }}">Logout</a>
+              </div>
+            </div>
+            {% else %}
+            <div class="rg">
+              <a href="{{ url_for('login') }}">Login</a>
+              <p>|</p>
+              <a href="{{ url_for('register') }}">Register</a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <div class="container">{% block container %} {% endblock %}</div>
+    <footer>
+      <div class="container1">
+        <div class="infodiv">
+          <div class="con">
+            <h3>Contact</h3>
+            <a href="mailto:judofedgeo@gmail.com">athletes.hub@gmail.com</a>
+            <a href="tel:+995322516466">+995 322 51 64 66</a>
+          </div>
+          <div class="exp">
+            <h3>Explore</h3>
+            <a href="#">HOME</a>
+            <a href="/news">NEWS</a>
+            <a href="/podcasts">PODCASTS</a>
+            <a href="/about">ABOUT</a>
+          </div>
+          <div class="loc">
+            <h3>Location</h3>
+            <a
+              target="_blank"
+              href="https://www.google.com/maps/place/Georgian+Judo+Federation/@41.7620686,44.7791565,212m/data=!3m1!1e3!4m6!3m5!1s0x40446d873b651e07:0x80dde30ebf9ca8ac!8m2!3d41.7619795!4d44.779637!16s%2Fg%2F11dx95f32w?entry=ttu&g_ep=EgoyMDI0MTIxMS4wIKXMDSoASAFQAw%3D%3D"
+              >38 Beliashvili st, <br />
+              Tbilisi 0159</a
+            >
+            <a
+              target="_blank"
+              href="https://www.google.com/maps/place/Vazha+Pshavela+Ave,+T'bilisi/@41.7261363,44.7492671,722m/data=!3m2!1e3!4b1!4m6!3m5!1s0x4044731c03207847:0x9549f57cfeb58af1!8m2!3d41.7261323!4d44.751842!16s%2Fg%2F11r8k90s4?entry=ttu&g_ep=EgoyMDI1MDcxNi4wIKXMDSoASAFQAw%3D%3D"
+              >Vazha Pshavela Ave</a
+            >
+          </div>
+          <div class="con">
+            <h3>Authorization</h3>
+            <a href="/login">LOGIN</a>
+            <a href="/register">REGISTER</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
